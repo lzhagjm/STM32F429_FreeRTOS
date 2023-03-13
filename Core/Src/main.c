@@ -21,6 +21,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "cmsis_os.h"
+#include "adc.h"
 #include "crc.h"
 #include "dma.h"
 #include "dma2d.h"
@@ -107,6 +108,7 @@ int main(void)
   MX_FMC_Init();
   MX_LTDC_Init();
   MX_RNG_Init();
+  MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */

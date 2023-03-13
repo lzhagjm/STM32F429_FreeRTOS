@@ -31,6 +31,7 @@
 #include "dma2d.h"
 #include <stdio.h>
 #include "_1.h"
+#include "adc.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -75,7 +76,7 @@ const osThreadAttr_t LcdTask_attributes = {
 osThreadId_t defaultTaskHandle;
 const osThreadAttr_t defaultTask_attributes = {
   .name = "defaultTask",
-  .stack_size = 128 * 4,
+  .stack_size = 256 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
 
@@ -144,12 +145,17 @@ void StartDefaultTask(void *argument)
   /* init code for LWIP */
   MX_LWIP_Init();
   /* USER CODE BEGIN StartDefaultTask */
-
+  uint32_t val = 0;
 	FatfsTaskHandle = osThreadNew(FatfsTask, NULL, &FatfsTask_attributes);
 	LcdTaskHandle = osThreadNew(LcdTask, NULL, &LcdTask_attributes);
 
     for(;;)
     {
+    	HAL_ADC_Start(&hadc1);
+    	HAL_ADC_PollForConversion(&hadc1, 0xFFFF);
+    	val = HAL_ADC_GetValue(&hadc1);
+    	HAL_ADC_Stop(&hadc1);
+    	printf("core tempsensor:%.2f\r\n",((float)val * 3300/4096 - 760) / 2.5 + 25); // @suppress("Float formatting support")
     	HAL_GPIO_TogglePin(GPIOH, GPIO_PIN_10);
       osDelay(1000);
     }
