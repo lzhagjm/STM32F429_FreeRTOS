@@ -16,6 +16,7 @@
   *
   ******************************************************************************
   */
+
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "dma2d.h"
@@ -38,10 +39,18 @@ void MX_DMA2D_Init(void)
 
   /* USER CODE END DMA2D_Init 1 */
   hdma2d.Instance = DMA2D;
-  hdma2d.Init.Mode = DMA2D_R2M;
+  hdma2d.Init.Mode = DMA2D_M2M;
   hdma2d.Init.ColorMode = DMA2D_OUTPUT_RGB888;
   hdma2d.Init.OutputOffset = 0;
+  hdma2d.LayerCfg[1].InputOffset = 0;
+  hdma2d.LayerCfg[1].InputColorMode = DMA2D_INPUT_RGB888;
+  hdma2d.LayerCfg[1].AlphaMode = DMA2D_NO_MODIF_ALPHA;
+  hdma2d.LayerCfg[1].InputAlpha = 0;
   if (HAL_DMA2D_Init(&hdma2d) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  if (HAL_DMA2D_ConfigLayer(&hdma2d, 1) != HAL_OK)
   {
     Error_Handler();
   }
@@ -85,9 +94,29 @@ void HAL_DMA2D_MspDeInit(DMA2D_HandleTypeDef* dma2dHandle)
 
 /* USER CODE BEGIN 1 */
 void dma2d_put_src_wh_c(uint32_t p, uint32_t w, uint32_t h, uint32_t c){
+  hdma2d.Init.Mode = DMA2D_R2M;
 	hdma2d.Init.OutputOffset = 1024 - w;
-	c &= 0xFFFFFF;
+  /* Change DMA2D peripheral state */
+  hdma2d.State = HAL_DMA2D_STATE_BUSY;
+  MODIFY_REG(hdma2d.Instance->CR, DMA2D_CR_MODE, hdma2d.Init.Mode);
+  MODIFY_REG(hdma2d.Instance->OOR, DMA2D_OOR_LO, hdma2d.Init.OutputOffset);
+  /* Initialize the DMA2D state*/
+  hdma2d.State  = HAL_DMA2D_STATE_READY;
 	HAL_DMA2D_Start(&hdma2d, c, p, w, h);
+	HAL_DMA2D_PollForTransfer(&hdma2d, 0xFFFF);
+}
+
+
+void dma2d_put_mem_mem(uint32_t src, uint32_t dst, uint32_t w, uint32_t h){
+  hdma2d.Init.Mode = DMA2D_M2M;
+	hdma2d.Init.OutputOffset = (1024 - w);
+  /* Change DMA2D peripheral state */
+  hdma2d.State = HAL_DMA2D_STATE_BUSY;
+  MODIFY_REG(hdma2d.Instance->CR, DMA2D_CR_MODE, hdma2d.Init.Mode);
+  MODIFY_REG(hdma2d.Instance->OOR, DMA2D_OOR_LO, hdma2d.Init.OutputOffset);
+  /* Initialize the DMA2D state*/
+  hdma2d.State  = HAL_DMA2D_STATE_READY;
+	HAL_DMA2D_Start(&hdma2d, src, dst, w, h);
 	HAL_DMA2D_PollForTransfer(&hdma2d, 0xFFFF);
 }
 

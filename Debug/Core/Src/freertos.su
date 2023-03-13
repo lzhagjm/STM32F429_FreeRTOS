@@ -1,5 +1,6 @@
-../Core/Src/freertos.c:99:6:MX_FREERTOS_Init	8	static
-../Core/Src/freertos.c:141:6:StartDefaultTask	16	static
-../Core/Src/freertos.c:161:13:draw_xy_wh_c	24	static
-../Core/Src/freertos.c:165:6:FatfsTask	1904	static
-../Core/Src/freertos.c:251:6:LcdTask	24	static
+../Core/Src/freertos.c:100:6:MX_FREERTOS_Init	8	static
+../Core/Src/freertos.c:142:6:StartDefaultTask	16	static
+../Core/Src/freertos.c:162:13:draw_xy_wh_c	24	static
+../Core/Src/freertos.c:166:13:draw_xy_wh_img	32	static
+../Core/Src/freertos.c:185:6:FatfsTask	1904	static
+../Core/Src/freertos.c:271:6:LcdTask	24	static

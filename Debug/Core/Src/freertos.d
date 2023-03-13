@@ -52,7 +52,8 @@ Core/Src/freertos.o: ../Core/Src/freertos.c \
  ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h \
  ../Middlewares/Third_Party/FatFs/src/diskio.h \
  ../Middlewares/Third_Party/FatFs/src/ff.h ../FATFS/Target/sd_diskio.h \
- ../Core/Inc/sdio.h ../Core/Inc/main.h ../Core/Inc/dma2d.h
+ ../Core/Inc/sdio.h ../Core/Inc/main.h ../Core/Inc/dma2d.h \
+ ../Core/Src/_1.h
 ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 ../Core/Inc/FreeRTOSConfig.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
@@ -113,3 +114,4 @@ Core/Src/freertos.o: ../Core/Src/freertos.c \
 ../Core/Inc/sdio.h:
 ../Core/Inc/main.h:
 ../Core/Inc/dma2d.h:
+../Core/Src/_1.h:

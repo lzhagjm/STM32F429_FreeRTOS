@@ -42,6 +42,7 @@ void MX_DMA2D_Init(void);
 
 /* USER CODE BEGIN Prototypes */
 void dma2d_put_src_wh_c(uint32_t p, uint32_t w, uint32_t h, uint32_t c);
+void dma2d_put_mem_mem(uint32_t src, uint32_t dst, uint32_t w, uint32_t h);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

@@ -30,6 +30,7 @@
 #include <string.h>
 #include "dma2d.h"
 #include <stdio.h>
+#include "_1.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -162,6 +163,25 @@ static void draw_xy_wh_c(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint32_
 	dma2d_put_src_wh_c(IMGRAM_BASE_ADDR + y * 1024 * 3 + x * 3, w, h, c);
 }
 
+static void draw_xy_wh_img(uint16_t x, uint16_t y, uint16_t w, uint16_t h, const uint8_t* src){
+//	dma2d_put_mem_mem(src, IMGRAM_BASE_ADDR + y * 1024 * 3 + x * 3, w, h);
+	uint8_t *p = (uint8_t*)(IMGRAM_BASE_ADDR + y * 1024 * 3 + x * 3);
+	uint32_t index = 0;
+	int i = 0, j = 0;
+	for(i = 0 ; i < h; i++){
+		for(j = 0 ; j < w; j++){
+				*p = src[index++];
+				p++;
+				*p = src[index++];
+				p++;
+				*p = src[index++];
+				p++;
+		}
+
+		p=p+(1024-w)*3;
+	}
+}
+
 void FatfsTask(void *argument){
 	int ret = 0;
 	char path[50];
@@ -252,14 +272,16 @@ void LcdTask(void *argument){
 
 	while(1){
 		draw_xy_wh_c(0, 0, 1024, 600, 0);
+		draw_xy_wh_c(255, 149, 512, 300, 0xFF0000);
 		osDelay(1000);
-		draw_xy_wh_c(0, 0, 1024, 600, 0xFF0000);
+		draw_xy_wh_c(255, 149, 512, 300, 0x00FF00);
 		osDelay(1000);
-		draw_xy_wh_c(0, 0, 1024, 600, 0x00FF00);
+		draw_xy_wh_c(255, 149, 512, 300, 0x0000FF);
 		osDelay(1000);
-		draw_xy_wh_c(0, 0, 1024, 600, 0x0000FF);
+		draw_xy_wh_c(255, 149, 512, 300, 0xFFFFFF);
 		osDelay(1000);
-		draw_xy_wh_c(0, 0, 1024, 600, 0xFFFFFF);
+		draw_xy_wh_c(0, 0, 1024, 600, 0);
+		draw_xy_wh_img(411, 199, 200, 200, _1_IMAGE);
 		osDelay(1000);
 	}
 }

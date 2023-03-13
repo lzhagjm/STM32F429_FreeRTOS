@@ -1,4 +1,5 @@
-../Core/Src/dma2d.c:30:6:MX_DMA2D_Init	8	static
-../Core/Src/dma2d.c:54:6:HAL_DMA2D_MspInit	24	static
-../Core/Src/dma2d.c:70:6:HAL_DMA2D_MspDeInit	16	static
-../Core/Src/dma2d.c:87:6:dma2d_put_src_wh_c	32	static
+../Core/Src/dma2d.c:31:6:MX_DMA2D_Init	8	static
+../Core/Src/dma2d.c:63:6:HAL_DMA2D_MspInit	24	static
+../Core/Src/dma2d.c:79:6:HAL_DMA2D_MspDeInit	16	static
+../Core/Src/dma2d.c:96:6:dma2d_put_src_wh_c	32	static
+../Core/Src/dma2d.c:110:6:dma2d_put_mem_mem	32	static
