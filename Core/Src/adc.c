@@ -105,5 +105,12 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* adcHandle)
 }
 
 /* USER CODE BEGIN 1 */
-
+float get_cpu_temp(void){
+	uint32_t val = 0;
+	HAL_ADC_Start(&hadc1);
+	HAL_ADC_PollForConversion(&hadc1, 0xFFFF);
+	val = HAL_ADC_GetValue(&hadc1);
+	HAL_ADC_Stop(&hadc1);
+	return (((float)val * 3300/4096 - 760) / 2.5 + 25);
+}
 /* USER CODE END 1 */

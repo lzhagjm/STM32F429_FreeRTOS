@@ -40,7 +40,7 @@ void MX_USART1_UART_Init(void)
 
   /* USER CODE END USART1_Init 1 */
   huart1.Instance = USART1;
-  huart1.Init.BaudRate = 115200;
+  huart1.Init.BaudRate = 921600;
   huart1.Init.WordLength = UART_WORDLENGTH_8B;
   huart1.Init.StopBits = UART_STOPBITS_1;
   huart1.Init.Parity = UART_PARITY_NONE;
@@ -115,7 +115,7 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 
 PUTCHAR_PROTOTYPE
 {
-
+	while((huart1.Instance->SR & (0x01 << 6))  == 0);
   HAL_UART_Transmit(&huart1, (uint8_t*)&ch, 1, HAL_MAX_DELAY);
   return ch;
 }

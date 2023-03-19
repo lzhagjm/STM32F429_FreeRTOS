@@ -30,6 +30,7 @@
 #include "lwip.h"
 #include "rng.h"
 #include "sdio.h"
+#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 #include "fmc.h"
@@ -109,6 +110,7 @@ int main(void)
   MX_LTDC_Init();
   MX_RNG_Init();
   MX_ADC1_Init();
+  MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */

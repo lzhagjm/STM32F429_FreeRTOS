@@ -32,6 +32,7 @@
 #include <stdio.h>
 #include "_1.h"
 #include "adc.h"
+#include "tim.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -70,13 +71,21 @@ const osThreadAttr_t LcdTask_attributes = {
   .priority = (osPriority_t) osPriorityNormal,
 };
 
+/************Info Task****************/
+osThreadId_t InfoTaskHandle;
+const osThreadAttr_t InfoTask_attributes = {
+  .name = "InfoTask",
+  .stack_size = 1024 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
+
 
 /* USER CODE END Variables */
 /* Definitions for defaultTask */
 osThreadId_t defaultTaskHandle;
 const osThreadAttr_t defaultTask_attributes = {
   .name = "defaultTask",
-  .stack_size = 256 * 4,
+  .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
 
@@ -84,6 +93,7 @@ const osThreadAttr_t defaultTask_attributes = {
 /* USER CODE BEGIN FunctionPrototypes */
 void FatfsTask(void *argument);
 void LcdTask(void *argument);
+void InfoTask(void *argument);
 //static void draw_xy_wh_c(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint32_t c);
 
 /* USER CODE END FunctionPrototypes */
@@ -92,6 +102,23 @@ void StartDefaultTask(void *argument);
 
 extern void MX_LWIP_Init(void);
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
+
+/* Hook prototypes */
+void configureTimerForRunTimeStats(void);
+unsigned long getRunTimeCounterValue(void);
+
+/* USER CODE BEGIN 1 */
+/* Functions needed when configGENERATE_RUN_TIME_STATS is on */
+__weak void configureTimerForRunTimeStats(void)
+{
+
+}
+
+__weak unsigned long getRunTimeCounterValue(void)
+{
+	return get_time_val();
+}
+/* USER CODE END 1 */
 
 /**
   * @brief  FreeRTOS initialization
@@ -125,6 +152,9 @@ void MX_FREERTOS_Init(void) {
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
+  FatfsTaskHandle = osThreadNew(FatfsTask, NULL, &FatfsTask_attributes);
+	LcdTaskHandle = osThreadNew(LcdTask, NULL, &LcdTask_attributes);
+	InfoTaskHandle = osThreadNew(InfoTask, NULL, &InfoTask_attributes);
   /* USER CODE END RTOS_THREADS */
 
   /* USER CODE BEGIN RTOS_EVENTS */
@@ -145,17 +175,9 @@ void StartDefaultTask(void *argument)
   /* init code for LWIP */
   MX_LWIP_Init();
   /* USER CODE BEGIN StartDefaultTask */
-  uint32_t val = 0;
-	FatfsTaskHandle = osThreadNew(FatfsTask, NULL, &FatfsTask_attributes);
-	LcdTaskHandle = osThreadNew(LcdTask, NULL, &LcdTask_attributes);
 
     for(;;)
     {
-    	HAL_ADC_Start(&hadc1);
-    	HAL_ADC_PollForConversion(&hadc1, 0xFFFF);
-    	val = HAL_ADC_GetValue(&hadc1);
-    	HAL_ADC_Stop(&hadc1);
-    	printf("core tempsensor:%.2f\r\n",((float)val * 3300/4096 - 760) / 2.5 + 25); // @suppress("Float formatting support")
     	HAL_GPIO_TogglePin(GPIOH, GPIO_PIN_10);
       osDelay(1000);
     }
@@ -168,6 +190,8 @@ void StartDefaultTask(void *argument)
 static void draw_xy_wh_c(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint32_t c){
 	dma2d_put_src_wh_c(IMGRAM_BASE_ADDR + y * 1024 * 3 + x * 3, w, h, c);
 }
+
+
 
 static void draw_xy_wh_img(uint16_t x, uint16_t y, uint16_t w, uint16_t h, const uint8_t* src){
 //	dma2d_put_mem_mem(src, IMGRAM_BASE_ADDR + y * 1024 * 3 + x * 3, w, h);
@@ -292,7 +316,24 @@ void LcdTask(void *argument){
 	}
 }
 
-
+void InfoTask(void *argument){
+	float temp = 0.;
+	char buff[500];
+	osDelay(1000);
+	while(1){
+		temp = get_cpu_temp();
+		printf("\r\n*******************Sys Info*******************\r\n");
+		printf("CPU Temp: %.2f'C\r\n", temp); // @suppress("Float formatting support")
+		vTaskList(buff);
+		printf("TaskName\tSta\tPrior\tFStack\tID\r\n");
+		printf("%s\r\n", buff);
+		vTaskGetRunTimeStats(buff);
+		printf("TaskName\tRunTime\t\tCPUload\r\n");
+		printf("%s\r\n", buff);
+		printf("*******************End Info*******************\r\n");
+		osDelay(2000);
+	}
+}
 
 /* USER CODE END Application */
 
