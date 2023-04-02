@@ -52,7 +52,6 @@
 #if defined(__ICCARM__) || defined(__CC_ARM) || defined(__GNUC__)
   #include <stdint.h>
   extern uint32_t SystemCoreClock;
-  void xPortSysTickHandler(void);
 /* USER CODE BEGIN 0 */
   extern void configureTimerForRunTimeStats(void);
   extern unsigned long getRunTimeCounterValue(void);
@@ -74,7 +73,7 @@
 #define configTICK_RATE_HZ                       ((TickType_t)1000)
 #define configMAX_PRIORITIES                     ( 56 )
 #define configMINIMAL_STACK_SIZE                 ((uint16_t)128)
-#define configTOTAL_HEAP_SIZE                    ((size_t)15360)
+#define configTOTAL_HEAP_SIZE                    ((size_t)51200)
 #define configMAX_TASK_NAME_LEN                  ( 16 )
 #define configGENERATE_RUN_TIME_STATS            1
 #define configUSE_TRACE_FACILITY                 1
@@ -169,7 +168,7 @@ standard names. */
 
 /* IMPORTANT: After 10.3.1 update, Systick_Handler comes from NVIC (if SYS timebase = systick), otherwise from cmsis_os2.c */
 
-#define USE_CUSTOM_SYSTICK_HANDLER_IMPLEMENTATION 1
+#define USE_CUSTOM_SYSTICK_HANDLER_IMPLEMENTATION 0
 
 /* USER CODE BEGIN 2 */
 /* Definitions needed when configGENERATE_RUN_TIME_STATS is on */

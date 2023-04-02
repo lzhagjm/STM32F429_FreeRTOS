@@ -22,13 +22,7 @@
 
 /* USER CODE BEGIN 0 */
 
-static uint32_t timer_cnt = 0;
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
-	if(htim->Instance == TIM6){
-		timer_cnt++;
-	}
-}
-
+uint32_t timer_cnt = 0;
 
 uint32_t get_time_val(void){
 	return timer_cnt;

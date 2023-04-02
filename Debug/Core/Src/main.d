@@ -30,6 +30,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/sdio.h ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sdram.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fmc.h \
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h \
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_ltdc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_ltdc_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
@@ -60,7 +62,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/sdio.h ../Core/Inc/main.h \
  ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h \
  ../Middlewares/Third_Party/FatFs/src/diskio.h \
  ../Middlewares/Third_Party/FatFs/src/ff.h ../FATFS/Target/sd_diskio.h \
- ../Core/Inc/ltdc.h ../LWIP/App/lwip.h \
+ ../Core/Inc/i2c.h ../Core/Inc/ltdc.h ../LWIP/App/lwip.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/opt.h \
  ../LWIP/Target/lwipopts.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/debug.h \
@@ -90,11 +92,6 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/sdio.h ../Core/Inc/main.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/prot/etharp.h \
  ../Middlewares/Third_Party/LwIP/src/include/netif/ethernet.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/dhcp.h \
- ../Middlewares/Third_Party/LwIP/src/include/lwip/udp.h \
- ../Middlewares/Third_Party/LwIP/src/include/lwip/ip.h \
- ../Middlewares/Third_Party/LwIP/src/include/lwip/ip6.h \
- ../Middlewares/Third_Party/LwIP/src/include/lwip/prot/ip.h \
- ../Middlewares/Third_Party/LwIP/src/include/lwip/prot/udp.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/timeouts.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/sys.h \
  ../Middlewares/Third_Party/LwIP/system/arch/sys_arch.h \
@@ -135,6 +132,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/sdio.h ../Core/Inc/main.h \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sdram.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fmc.h:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_ltdc.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_ltdc_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
@@ -170,6 +169,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/sdio.h ../Core/Inc/main.h \
 ../Middlewares/Third_Party/FatFs/src/diskio.h:
 ../Middlewares/Third_Party/FatFs/src/ff.h:
 ../FATFS/Target/sd_diskio.h:
+../Core/Inc/i2c.h:
 ../Core/Inc/ltdc.h:
 ../LWIP/App/lwip.h:
 ../Middlewares/Third_Party/LwIP/src/include/lwip/opt.h:
@@ -201,11 +201,6 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/sdio.h ../Core/Inc/main.h \
 ../Middlewares/Third_Party/LwIP/src/include/lwip/prot/etharp.h:
 ../Middlewares/Third_Party/LwIP/src/include/netif/ethernet.h:
 ../Middlewares/Third_Party/LwIP/src/include/lwip/dhcp.h:
-../Middlewares/Third_Party/LwIP/src/include/lwip/udp.h:
-../Middlewares/Third_Party/LwIP/src/include/lwip/ip.h:
-../Middlewares/Third_Party/LwIP/src/include/lwip/ip6.h:
-../Middlewares/Third_Party/LwIP/src/include/lwip/prot/ip.h:
-../Middlewares/Third_Party/LwIP/src/include/lwip/prot/udp.h:
 ../Middlewares/Third_Party/LwIP/src/include/lwip/timeouts.h:
 ../Middlewares/Third_Party/LwIP/src/include/lwip/sys.h:
 ../Middlewares/Third_Party/LwIP/system/arch/sys_arch.h:

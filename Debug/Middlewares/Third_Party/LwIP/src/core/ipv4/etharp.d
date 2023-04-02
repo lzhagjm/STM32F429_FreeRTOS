@@ -33,6 +33,8 @@ Middlewares/Third_Party/LwIP/src/core/ipv4/etharp.o: \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sdram.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fmc.h \
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h \
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_ltdc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_ltdc_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
@@ -69,11 +71,6 @@ Middlewares/Third_Party/LwIP/src/core/ipv4/etharp.o: \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/prot/etharp.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/snmp.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/dhcp.h \
- ../Middlewares/Third_Party/LwIP/src/include/lwip/udp.h \
- ../Middlewares/Third_Party/LwIP/src/include/lwip/ip.h \
- ../Middlewares/Third_Party/LwIP/src/include/lwip/ip6.h \
- ../Middlewares/Third_Party/LwIP/src/include/lwip/prot/ip.h \
- ../Middlewares/Third_Party/LwIP/src/include/lwip/prot/udp.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/autoip.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/prot/iana.h \
  ../Middlewares/Third_Party/LwIP/src/include/netif/ethernet.h
@@ -111,6 +108,8 @@ Middlewares/Third_Party/LwIP/src/core/ipv4/etharp.o: \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sdram.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fmc.h:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_ltdc.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_ltdc_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
@@ -147,11 +146,6 @@ Middlewares/Third_Party/LwIP/src/core/ipv4/etharp.o: \
 ../Middlewares/Third_Party/LwIP/src/include/lwip/prot/etharp.h:
 ../Middlewares/Third_Party/LwIP/src/include/lwip/snmp.h:
 ../Middlewares/Third_Party/LwIP/src/include/lwip/dhcp.h:
-../Middlewares/Third_Party/LwIP/src/include/lwip/udp.h:
-../Middlewares/Third_Party/LwIP/src/include/lwip/ip.h:
-../Middlewares/Third_Party/LwIP/src/include/lwip/ip6.h:
-../Middlewares/Third_Party/LwIP/src/include/lwip/prot/ip.h:
-../Middlewares/Third_Party/LwIP/src/include/lwip/prot/udp.h:
 ../Middlewares/Third_Party/LwIP/src/include/lwip/autoip.h:
 ../Middlewares/Third_Party/LwIP/src/include/lwip/prot/iana.h:
 ../Middlewares/Third_Party/LwIP/src/include/netif/ethernet.h:

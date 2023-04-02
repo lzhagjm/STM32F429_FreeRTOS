@@ -35,6 +35,7 @@ extern "C" {
 extern TIM_HandleTypeDef htim6;
 
 /* USER CODE BEGIN Private defines */
+extern uint32_t timer_cnt;
 uint32_t get_time_val(void);
 /* USER CODE END Private defines */
 

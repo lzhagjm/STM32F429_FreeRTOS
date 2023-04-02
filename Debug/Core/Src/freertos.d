@@ -39,6 +39,8 @@ Core/Src/freertos.o: ../Core/Src/freertos.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sdram.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fmc.h \
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h \
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_ltdc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_ltdc_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
@@ -58,7 +60,22 @@ Core/Src/freertos.o: ../Core/Src/freertos.c \
  ../Middlewares/Third_Party/FatFs/src/diskio.h \
  ../Middlewares/Third_Party/FatFs/src/ff.h ../FATFS/Target/sd_diskio.h \
  ../Core/Inc/sdio.h ../Core/Inc/main.h ../Core/Inc/dma2d.h \
- ../Core/Src/_1.h ../Core/Inc/adc.h ../Core/Inc/tim.h
+ ../Core/Src/_1.h ../Core/Inc/adc.h ../Core/Inc/tim.h ../Core/Inc/i2c.h \
+ ../Middlewares/Third_Party/LwIP/src/include/lwip/apps/mqtt.h \
+ ../Middlewares/Third_Party/LwIP/src/include/lwip/apps/mqtt_opts.h \
+ ../Middlewares/Third_Party/LwIP/src/include/lwip/opt.h \
+ ../LWIP/Target/lwipopts.h \
+ ../Middlewares/Third_Party/LwIP/src/include/lwip/debug.h \
+ ../Middlewares/Third_Party/LwIP/src/include/lwip/arch.h \
+ ../Middlewares/Third_Party/LwIP/system/arch/cc.h \
+ ../Middlewares/Third_Party/LwIP/system/arch/cpu.h \
+ ../Middlewares/Third_Party/LwIP/src/include/lwip/err.h \
+ ../Middlewares/Third_Party/LwIP/src/include/lwip/ip_addr.h \
+ ../Middlewares/Third_Party/LwIP/src/include/lwip/def.h \
+ ../Middlewares/Third_Party/LwIP/src/include/lwip/ip4_addr.h \
+ ../Middlewares/Third_Party/LwIP/src/include/lwip/ip6_addr.h \
+ ../Middlewares/Third_Party/LwIP/src/include/lwip/def.h \
+ ../Middlewares/Third_Party/LwIP/src/include/lwip/prot/iana.h
 ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 ../Core/Inc/FreeRTOSConfig.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
@@ -100,6 +117,8 @@ Core/Src/freertos.o: ../Core/Src/freertos.c \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sdram.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fmc.h:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_ltdc.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_ltdc_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
@@ -127,3 +146,19 @@ Core/Src/freertos.o: ../Core/Src/freertos.c \
 ../Core/Src/_1.h:
 ../Core/Inc/adc.h:
 ../Core/Inc/tim.h:
+../Core/Inc/i2c.h:
+../Middlewares/Third_Party/LwIP/src/include/lwip/apps/mqtt.h:
+../Middlewares/Third_Party/LwIP/src/include/lwip/apps/mqtt_opts.h:
+../Middlewares/Third_Party/LwIP/src/include/lwip/opt.h:
+../LWIP/Target/lwipopts.h:
+../Middlewares/Third_Party/LwIP/src/include/lwip/debug.h:
+../Middlewares/Third_Party/LwIP/src/include/lwip/arch.h:
+../Middlewares/Third_Party/LwIP/system/arch/cc.h:
+../Middlewares/Third_Party/LwIP/system/arch/cpu.h:
+../Middlewares/Third_Party/LwIP/src/include/lwip/err.h:
+../Middlewares/Third_Party/LwIP/src/include/lwip/ip_addr.h:
+../Middlewares/Third_Party/LwIP/src/include/lwip/def.h:
+../Middlewares/Third_Party/LwIP/src/include/lwip/ip4_addr.h:
+../Middlewares/Third_Party/LwIP/src/include/lwip/ip6_addr.h:
+../Middlewares/Third_Party/LwIP/src/include/lwip/def.h:
+../Middlewares/Third_Party/LwIP/src/include/lwip/prot/iana.h:
