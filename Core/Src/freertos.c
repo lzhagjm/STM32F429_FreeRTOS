@@ -35,6 +35,7 @@
 #include "tim.h"
 #include "i2c.h"
 #include "mqtt.h"
+#include "GSL1680.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -159,6 +160,7 @@ void MX_FREERTOS_Init(void) {
   /* add semaphores, ... */
 	osSemaphoreId_t semaphore;
 	semaphore = osSemaphoreNew (1, 0, NULL);
+
   /* USER CODE END RTOS_SEMAPHORES */
 
   /* USER CODE BEGIN RTOS_TIMERS */
@@ -417,6 +419,7 @@ void MQTT_Task(void *argument){
 
 void TouchTask(void *argument){
 
+	GSL_Init();
 	while(1){
 
 		osDelay(1000);

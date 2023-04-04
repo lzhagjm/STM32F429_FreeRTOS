@@ -1,0 +1,4 @@
+../Core/Src/GSL1680.c:8:26:GSL_Transmit_Byte	32	static
+../Core/Src/GSL1680.c:14:16:GSL_Receive_Byte	32	static
+../Core/Src/GSL1680.c:24:6:GSL_INT_Callback	8	static
+../Core/Src/GSL1680.c:29:9:GSL_Init	24	static
