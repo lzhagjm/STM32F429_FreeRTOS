@@ -11,4 +11,5 @@
 ../Core/Src/freertos.c:374:13:mqtt_incoming_publish_cb	24	static
 ../Core/Src/freertos.c:378:13:mqtt_incoming_data_cb	24	static
 ../Core/Src/freertos.c:382:6:MQTT_Task	80	static
-../Core/Src/freertos.c:420:6:TouchTask	16	static
+../Core/Src/freertos.c:419:24:join_bytes	24	static
+../Core/Src/freertos.c:427:6:TouchTask	72	static

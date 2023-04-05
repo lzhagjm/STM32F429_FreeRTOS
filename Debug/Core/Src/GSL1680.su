@@ -1,4 +1,12 @@
-../Core/Src/GSL1680.c:8:26:GSL_Transmit_Byte	32	static
-../Core/Src/GSL1680.c:14:16:GSL_Receive_Byte	32	static
-../Core/Src/GSL1680.c:24:6:GSL_INT_Callback	8	static
-../Core/Src/GSL1680.c:29:9:GSL_Init	24	static
+../Core/Src/GSL1680.c:10:26:GSL_Transmit_Byte	40	static
+../Core/Src/GSL1680.c:16:16:GSL_Receive_Byte	40	static
+../Core/Src/GSL1680.c:26:6:GSL_INT_Callback	8	static
+../Core/Src/GSL1680.c:32:24:fw2buf	24	static
+../Core/Src/GSL1680.c:38:13:gsl_load_fw	176	static
+../Core/Src/GSL1680.c:93:13:test_i2c	32	static
+../Core/Src/GSL1680.c:133:13:startup_chip	32	static
+../Core/Src/GSL1680.c:152:13:reset_chip	32	static
+../Core/Src/GSL1680.c:165:13:clr_reg	32	static
+../Core/Src/GSL1680.c:183:13:init_chip	8	static
+../Core/Src/GSL1680.c:198:13:check_mem_data	32	static
+../Core/Src/GSL1680.c:212:9:GSL_Init	32	static

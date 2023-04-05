@@ -9,13 +9,13 @@
 #define INC_GSL1680_H_
 
 #include "i2c.h"
-
-
+#include "cmsis_os2.h"
+extern osSemaphoreId_t Touchsemaphore;
 
 /* 					port 					*/
-#define I2C_DEVICE (&hi2c2)
+#define GSL_I2C_DEVICE (&hi2c2)
 #define GSL_RST(x)	HAL_GPIO_WritePin(GPIOD, GPIO_PIN_11, x);
-#define GSL_ADDR		0x40
+#define GSL_ADDR		(0x40 << 1)
 
 
 
@@ -55,11 +55,20 @@
 #define GSL_MAX_FINGERS	10
 #define DMA_TRANS_LEN	0x20
 
+struct gsl_touch_info
+{
+	int x[10];
+	int y[10];
+	int id[10];
+	int finger_num;
+};
+
 
 /* 				GSL FUNs 					*/
 
-#define GSL_Transmit(DevAddress, pData, Size, Timeout) HAL_I2C_Master_Transmit(I2C_DEVICE, DevAddress, pData, Size, Timeout)
-#define GSL_Receive(DevAddress, pData, Size, Timeout) HAL_I2C_Master_Receive(I2C_DEVICE, DevAddress, pData, Size, Timeout)
+#define GSL_Transmit(reg, pData, Size, Timeout) HAL_I2C_Mem_Write(GSL_I2C_DEVICE, GSL_ADDR, reg, I2C_MEMADD_SIZE_8BIT, pData, Size, Timeout)
+
+#define GSL_Receive(reg, pData, Size, Timeout) HAL_I2C_Mem_Read(GSL_I2C_DEVICE, GSL_ADDR, reg, I2C_MEMADD_SIZE_8BIT, pData, Size, Timeout)
 
 
 uint8_t GSL_Init(void);

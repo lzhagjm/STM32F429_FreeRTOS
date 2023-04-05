@@ -416,13 +416,29 @@ void MQTT_Task(void *argument){
 	}
 }
 
+static inline uint16_t join_bytes(uint8_t a, uint8_t b)
+{
+	uint16_t ab = 0;
+	ab = ab | a;
+	ab = ab << 8 | b;
+	return ab;
+}
 
 void TouchTask(void *argument){
-
+	taskENTER_CRITICAL();
 	GSL_Init();
+	taskEXIT_CRITICAL();
+	uint8_t data[24];
+	HAL_StatusTypeDef err;
 	while(1){
-
-		osDelay(1000);
+		if(osSemaphoreAcquire(Touchsemaphore, osWaitForever) == osOK){
+				err = GSL_Receive(GSL_REG_DATA, data, 24, 0xFFFF);
+				if(err != HAL_OK){
+					printf("GSL_Receive data is error: %d\r\n", err);
+				}else{
+					printf("%d:(%d, %d)\r\n", data[0], join_bytes(data[6 + 4 * 0 + 1] & 0xf, data[6 + 4 * 0]), join_bytes(data[4 + 4 * 0 + 1], data[4 + 4 * 0]));
+				}
+		}
 	}
 }
 
